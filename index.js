@@ -146,8 +146,9 @@ function animate() {
   }
 }
 animate();
+
 */
-//My experimentation: Adding colors.
+//My experimentation: I added fill colors and the radius is randomly generated.
 
 function Circle(x, y, dx, dy, radius, chosenColor) {
   this.x = x;
@@ -159,8 +160,10 @@ function Circle(x, y, dx, dy, radius, chosenColor) {
   this.draw = function() {
     c.beginPath();
     c.strokeStyle = this.color;
+    c.fillStyle = this.color;
     c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
     c.stroke();
+    c.fill();
   };
   this.update = function() {
     if (this.x + this.radius > innerWidth || this.x - this.radius < 0) {
@@ -177,8 +180,8 @@ function Circle(x, y, dx, dy, radius, chosenColor) {
 
 var circleArray = [];
 
-for (let i = 0; i < 100; i++) {
-  var radius = 30;
+for (let i = 0; i < 500; i++) {
+  var radius = Math.floor(Math.random() * 30);
   var x = Math.random() * (innerWidth - radius * 2) + radius;
   var dx = (Math.random() - 0.5) * 9;
   var y = Math.random() * innerHeight;
